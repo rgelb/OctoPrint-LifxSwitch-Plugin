@@ -1,17 +1,13 @@
 # OctoPrint-Lifxswitch
 
-**TODO:** Describe what your plugin does.
+The plugin will turn on the LifX light when the print starts and will turn it off when it ends.
 
 ## Setup
 
-Install via the bundled [Plugin Manager](https://github.com/foosel/OctoPrint/wiki/Plugin:-Plugin-Manager)
-or manually using this URL:
+Install manually for now by going to Settings/Plugin Manager/Get More.  Enter the URL below into the ...from URL box and click Install.
 
     https://github.com/rgelb/OctoPrint-LifxSwitch-Plugin/archive/master.zip
 
-**TODO:** Describe how to install your plugin, if more needs to be done than just installing it via pip or through
-the plugin manager.
-
 ## Configuration
 
-**TODO:** Describe your plugin's configuration options (if any).
+Go to [LIFX Cloud](https://cloud.lifx.com/settings), obtain Access Token and Light ID and enter them into the Lifx Switch section of the Setting screen. 
