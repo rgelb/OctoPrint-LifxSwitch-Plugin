@@ -13,7 +13,8 @@ class LifxSwitchPlugin(octoprint.plugin.StartupPlugin,
                         octoprint.plugin.TemplatePlugin,
                         octoprint.plugin.EventHandlerPlugin,
                         octoprint.plugin.SimpleApiPlugin, 
-                        octoprint.plugin.AssetPlugin):
+                        octoprint.plugin.AssetPlugin,
+                        octoprint.plugin.OctoPrintPlugin):
 
     def on_after_startup(self):
         self._logger.info("Hello LifX World!")
