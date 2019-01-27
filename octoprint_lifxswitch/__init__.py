@@ -127,13 +127,42 @@ class LifxSwitchPlugin(octoprint.plugin.StartupPlugin,
     def get_assets(self):
         return dict(
             js=["js/lifxswitch.js"]
-        )        
+        )
 
-plugin_identifier = "lifxswitch"
-plugin_package = "octoprint_lifxswitch"
-plugin_name = "Lifx Switch"
-plugin_version = "0.1.0"
-plugin_description = """Turns on the light when the print starts.  Turns it off when it ends."""
-plugin_author = "Robert Gelb"
-plugin_author_email = "rgelb@vbrad.com"
-__plugin_implementation__ = LifxSwitchPlugin()
+    ##~~ Softwareupdate hook
+    def get_update_information(self):
+        return dict(
+            rtmpstreamer=dict(
+                displayName="Lifx Switch",
+                displayVersion=self._plugin_version,
+
+                # version check: github repository
+                type="github_release",
+                user="rgelb",
+                repo="OctoPrint-LifxSwitch-Plugin",
+                current=self._plugin_version,
+
+                # update method: pip
+                pip="https://github.com/rgelb/OctoPrint-LifxSwitch-Plugin/archive/{target_version}.zip"
+            )
+        )
+
+
+    def __plugin_load__():
+        global __plugin_implementation__
+        __plugin_implementation__ = LifxSwitchPlugin()
+
+        global __plugin_hooks__
+        __plugin_hooks__ = {
+            "octoprint.plugin.softwareupdate.check_config": __plugin_implementation__.get_update_information
+        }
+
+# plugin_identifier = "lifxswitch"
+# plugin_package = "octoprint_lifxswitch"
+# plugin_name = "Lifx Switch"
+# plugin_version = "0.1.0"
+# plugin_description = """Turns on the light when the print starts.  Turns it off when it ends."""
+# plugin_author = "Robert Gelb"
+# plugin_author_email = "rgelb@vbrad.com"
+
+# __plugin_implementation__ = LifxSwitchPlugin()
